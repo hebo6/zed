@@ -1505,6 +1505,7 @@ impl Dispatch<zwp_text_input_v3::ZwpTextInputV3, ()> for WaylandClientStatePtr {
             }
             zwp_text_input_v3::Event::CommitString { text } => {
                 state.composing = false;
+                state.ime_pre_edit = None;
                 let Some(window) = state.keyboard_focused_window.clone() else {
                     return;
                 };
